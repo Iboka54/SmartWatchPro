@@ -18,11 +18,17 @@ jobs:
 
       - name: Build with Buildozer
         run: |
-          # ڕێکخستنی مۆڵەتەکان بە شێوەیەکی جێگیر
-          export ANDROIDSDK=$HOME/.buildozer/android/platform/android-sdk
-          export PATH=$PATH:$ANDROIDSDK/cmdline-tools/latest/bin
-          
-          # بەکارهێنانی فەرمانێک بۆ دانانی مۆڵەتەکان پێش ئەوەی buildozer دەست پێبکات
+          # ڕێکخستنی مۆڵەتەکان و بەکارهێنانی sdkmanager بۆ دڵنیابوون
           mkdir -p ~/.android
           touch ~/.android/repositories.cfg
+          
+          # قبوڵکردنی هەموو مۆڵەتەکان پێش ئەوەی buildozer دەست پێبکات
+          yes | sdkmanager --licenses || true
+          
           buildozer android debug
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: bin/*.apk
