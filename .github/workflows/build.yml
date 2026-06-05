@@ -1,3 +1,4 @@
+
 name: Build APK with Buildozer
 on:
   push:
@@ -18,10 +19,7 @@ jobs:
 
       - name: Build with Buildozer
         run: |
-          mkdir -p ~/.android
-          touch ~/.android/repositories.cfg
-          # ڕاستەوخۆ مۆڵەتەکان قبوڵ دەکەین
-          echo y | sdkmanager --licenses || true
+          # دڵنیابوون لەوەی buildozer هەموو پێداویستییەکان بە خۆکاری دادەمەزرێنێت
           buildozer android debug
 
       - name: Upload artifacts
