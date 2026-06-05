@@ -18,13 +18,6 @@ jobs:
 
       - name: Build with Buildozer
         run: |
-          # ڕێکخستنی مۆڵەتەکان و بەکارهێنانی sdkmanager بۆ دڵنیابوون
-          mkdir -p ~/.android
-          touch ~/.android/repositories.cfg
-          
-          # قبوڵکردنی هەموو مۆڵەتەکان پێش ئەوەی buildozer دەست پێبکات
-          yes | sdkmanager --licenses || true
-          
           buildozer android debug
 
       - name: Upload artifacts
