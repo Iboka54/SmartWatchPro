@@ -19,7 +19,8 @@ jobs:
 
       - name: Build with Buildozer
         run: |
-          # دڵنیابوون لەوەی buildozer هەموو پێداویستییەکان بە خۆکاری دادەمەزرێنێت
+          # زیادکردنی ڕێگەی SDK بە شێوەیەکی دەستی بۆ دڵنیابوون
+          export ANDROID_HOME=/usr/lib/android-sdk
           buildozer android debug
 
       - name: Upload artifacts
